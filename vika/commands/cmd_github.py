@@ -40,9 +40,7 @@ def create(ctx, name, private, gitignore):
 def delete(ctx, name):
     """Delete a github repo"""
     repo = ctx.obj.github.get_repo(name)
-    if click.confirm(
-        f"Are you sure you want to delete {repo.html_url}?", default=False
-    ):
+    if click.confirm(f"Are you sure you want to delete {repo.html_url}?", default=False):
         ctx.obj.github.delete_repo(repo.name)
         click.echo(f"Deleted: {repo.name}")
     else:

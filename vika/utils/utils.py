@@ -1,9 +1,6 @@
-import secrets
-import string
+import pytz
 import time
 from datetime import datetime
-
-import pytz
 
 
 def convert_epoch_to(epoch, fmt):
@@ -23,14 +20,4 @@ def format_int_from_str(int_number: str):
 
 
 def get_time_diff(date_one: str, date_two: str):
-    return datetime.fromisoformat(date_one).astimezone(
-        pytz.UTC
-    ) - datetime.fromisoformat(date_two).astimezone(pytz.UTC)
-
-
-def getpwd(length):
-    alphabet = string.ascii_letters + string.digits
-
-    password = "".join(secrets.choice(alphabet) for _ in range(length))
-
-    print(password)
+    return datetime.fromisoformat(date_one).astimezone(pytz.UTC) - datetime.fromisoformat(date_two).astimezone(pytz.UTC)

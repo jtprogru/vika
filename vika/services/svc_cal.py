@@ -1,6 +1,5 @@
 import datetime
 import os
-
 import pytz
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
@@ -42,9 +41,7 @@ class Calendar:
         self.service = build_service()
 
     def next(self):
-        now = datetime.datetime.now(
-            tz=pytz.UTC
-        ).isoformat()  # Google calendar api expects date in UTC
+        now = datetime.datetime.now(tz=pytz.UTC).isoformat()  # Google calendar api expects date in UTC
         events_result = (
             self.service.events()
             .list(
@@ -58,22 +55,14 @@ class Calendar:
         )
         events = []
         for e in events_result.get("items", []):
-            starts_in = f.get_time_diff(
-                str(e["start"]["dateTime"]), str(datetime.datetime.now(tz=pytz.UTC))
-            )
+            starts_in = f.get_time_diff(str(e["start"]["dateTime"]), str(datetime.datetime.now(tz=pytz.UTC)))
             events.append(
                 {
                     "name": e["summary"],
                     "organizer": e["organizer"]["email"],
                     "status": e["status"].capitalize(),
                     "starts_in": f'{starts_in.seconds // 60 if starts_in.days >= 0 else "In Progress"}',
-                    "duration": str(
-                        f.get_time_diff(
-                            str(e["end"]["dateTime"]), str(e["start"]["dateTime"])
-                        ).seconds
-                        // 60
-                    )
-                    + " min",
+                    "duration": str(f.get_time_diff(str(e["end"]["dateTime"]), str(e["start"]["dateTime"])).seconds // 60) + " min",
                 }
             )
         return events

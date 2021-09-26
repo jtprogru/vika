@@ -61,6 +61,4 @@ class Gecko:
             include_market_cap="true",
             include_24hr_change="true",
         )
-        return self.filter_essential_data(
-            result[coin.lower()], coin=coin, currency=currency
-        )
+        return self.filter_essential_data(result[coin.lower()], coin=coin, currency=currency)

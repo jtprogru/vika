@@ -12,7 +12,6 @@ documentation = "https://github.com/jtprogru/vika/wiki"
 
 [dependencies]
 python = "^3.9"
-requests = "^2.26.0"
 ruamel.yaml = "^0.17.16"
 attrs = "21.2.0"
 black = "21.9b0"
@@ -82,7 +81,7 @@ uritemplate = "3.0.1"
 urllib3 = "1.26.7"
 wrapt = "1.12.1"
 
-[tool.poetry.dev-dependencies]
+[dev-dependencies]
 pytest = "^6.2.4"
 pytest-cov = "^2.10.1"
 pytest-env = "^0.6.2"
@@ -130,3 +129,4 @@ extend-exclude = '''
   | tests
 )/
 '''
+

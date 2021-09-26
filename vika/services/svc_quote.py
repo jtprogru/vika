@@ -1,7 +1,6 @@
 import random
-from textwrap import shorten, wrap
-
 from quote import quote
+from textwrap import shorten, wrap
 
 from vika.config import QU_SEARCH
 
@@ -15,7 +14,5 @@ class Quote:
         if not results:
             return ""
         random_quote = random.choice(results)["quote"]
-        wrapped_quote = "\n".join(
-            wrap(shorten(random_quote, 280 - 4, placeholder="..."), 70)
-        )
+        wrapped_quote = "\n".join(wrap(shorten(random_quote, 280 - 4, placeholder="..."), 70))
         return wrapped_quote

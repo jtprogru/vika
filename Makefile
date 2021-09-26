@@ -14,7 +14,7 @@ run: &venv-activate
 	python -m vika
 
 venv:
-	$(which python3) -m venv venv
+	python3 -m venv venv
 
 install-deps-prod: requirements.txt
 	./venv/bin/pip install -r requirements.txt

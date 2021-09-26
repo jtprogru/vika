@@ -27,16 +27,11 @@ class Weather:
         weather = observation.weather
 
         result = self.get_weather_data(weather)
-        result[
-            "location"
-        ] = f"{observation.location.name} {observation.location.country}"
+        result["location"] = f"{observation.location.name} {observation.location.country}"
 
         return result
 
     def forecast(self, location, interval="3h"):
         forecaster = self.manager.forecast_at_place(location, interval)
         location = f"{forecaster.forecast.location.name} {forecaster.forecast.location.country}"
-        return [
-            {**self.get_weather_data(weather), **{"location": location}}
-            for weather in forecaster.forecast.weathers
-        ]
+        return [{**self.get_weather_data(weather), **{"location": location}} for weather in forecaster.forecast.weathers]
