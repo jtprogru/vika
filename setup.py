@@ -7,19 +7,19 @@ def read(fname):
 
 
 def read_requirements():
-    with open('requirements.txt', 'r') as req:
+    with open("requirements.txt", "r") as req:
         content = req.read()
-        requirements = content.split('\n')
+        requirements = content.split("\n")
 
     return requirements
 
 
 def read_dev_requirements():
-    with open('requirements-dev.txt', 'r') as req:
+    with open("requirements-dev.txt", "r") as req:
         content = req.read()
-        requirements = content.split('\n')
+        requirements = content.split("\n")
 
-    return {'dev': requirements}
+    return {"dev": requirements}
 
 
 setup(
@@ -29,7 +29,7 @@ setup(
     author_email="jtprogru@gmail.com",
     description=("Some helpers functions."),
     license="WTFPL",
-    keywords="password generator",
+    keywords="password generator assistant",
     url="https://github.com/jtprogru/vika",
     packages=find_packages(),
     include_package_date=True,
@@ -39,7 +39,7 @@ setup(
         [console_scripts]
         vika=vika.cli:cli
     """,
-    long_description=read('README.md'),
+    long_description=read("README.md"),
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Topic :: Utilities",
