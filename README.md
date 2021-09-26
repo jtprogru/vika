@@ -2,7 +2,7 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Testing](https://github.com/jtprogru/vika/actions/workflows/testing.yml/badge.svg)](https://github.com/jtprogru/vika/actions/workflows/testing.yml)
 [![GitHub issues](https://img.shields.io/github/issues-raw/jtprogru/vika)](https://github.com/jtprogru/vika/issues)
-[![GitHub](https://img.shields.io/github/license/jtprgoru/vika)](https://github.com/jtprogru/vika/)
+[![GitHub](https://img.shields.io/github/license/jtprogru/vika)](https://github.com/jtprogru/vika/)
 [![Wiki](https://img.shields.io/badge/Wiki-READ-success)](https://github.com/jtprogru/vika/wiki)
 
 Пакет с функциями, для упрощения жизни.
