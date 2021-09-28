@@ -1,7 +1,6 @@
+import click
 import secrets
 import string
-
-import click
 
 
 def gen(lenght):

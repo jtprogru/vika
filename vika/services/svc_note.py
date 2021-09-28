@@ -1,7 +1,6 @@
 import json
 import os.path
 from datetime import date
-
 from rich import box
 from rich.console import Console
 from rich.table import Table
@@ -47,9 +46,7 @@ class Note:
         # Load note-file into note-data
         with open(self.note_file, encoding="utf-8") as f:
             self.note_data = json.load(f)
-            self.console.log(
-                f"[{self.color}]{self.note_file}[/] loaded into class-object..."
-            )
+            self.console.log(f"[{self.color}]{self.note_file}[/] loaded into class-object...")
 
     def output(self):
         # Create copy of note-data for output (because of the transformation-process necessary for rich-table)
@@ -149,23 +146,17 @@ class Note:
             # Edit values for given key
             edit_counter = 0
             if key not in self.note_data:
-                self.console.log(
-                    f"No note found for given key [{self.color}]{key}[/]..."
-                )
+                self.console.log(f"No note found for given key [{self.color}]{key}[/]...")
                 return
             for item_key, value in kwargs.items():
                 if value is not None:
                     self.note_data[key][item_key] = value
                     edit_counter += 1
-                    self.console.log(
-                        f"{item_key} of key [{self.color}]{key}[/] changed to [{self.color}]{value}[/]..."
-                    )
+                    self.console.log(f"{item_key} of key [{self.color}]{key}[/] changed to [{self.color}]{value}[/]...")
             if edit_counter == 0:
                 self.console.log(f"No values of key [{self.color}]{key}[/] changed...")
             else:
-                self.console.log(
-                    f"[{self.color}]{edit_counter}[/] values of key [{self.color}]{key}[/] changed..."
-                )
+                self.console.log(f"[{self.color}]{edit_counter}[/] values of key [{self.color}]{key}[/] changed...")
                 self.note_data[key]["EditDate"] = str(date.today())
                 self.save()
 
