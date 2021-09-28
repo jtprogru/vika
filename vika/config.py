@@ -27,4 +27,4 @@ PATH_TO_CALENDAR_API_CRED = os.environ.get("PATH_TO_CALENDAR_API_CRED", "<PATH-T
 QU_SEARCH = "Tolkien"
 
 # Note
-NOTE_DEFAULT_PATH = os.path.join(pathlib.Path.home(), ".eve_note.json")
+NOTE_DEFAULT_PATH = os.path.join(pathlib.Path.home(), ".vika_note.json")
