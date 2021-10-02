@@ -1,19 +1,6 @@
-click
-google-api-core
-google-api-python-client
-google-auth-oauthlib
-google-auth
-packaging
-pycoingecko
-PyGithub
-PyJWT
-pyowm
-pyparsing
-PySocks
-python-coinmarketcap
-pytz
-quote
-requests
-rich
-rsa
+-e .
+
+black
+flake8
+isort
 pytest
