@@ -14,8 +14,12 @@ class Context:
 
 
 @click.group()
-@click.option("-c", "--coin", type=str, help="Coin", default=DEFAULT_COIN, show_default=True)
-@click.option("-ccy", "--currency", type=str, help="Currency", default=CURRENCY, show_default=True)
+@click.option(
+    "-c", "--coin", type=str, help="Coin", default=DEFAULT_COIN, show_default=True
+)
+@click.option(
+    "-ccy", "--currency", type=str, help="Currency", default=CURRENCY, show_default=True
+)
 @click.pass_context
 def cli(ctx, coin, currency):
     """Coin price for a given coin"""
@@ -30,9 +34,23 @@ def price(ctx):
     result = ctx.obj.crypto.price(coin=ctx.obj.coin, currency=ctx.obj.currency)
     price_value = result["value"]
     price_currency = result["currency"]
-    total_supply = utils.format_int_from_str(result["total_supply"]) if result.get("total_supply") else "Not Available"
-    click.echo(f' {result.get("symbol")} ({result["name"].upper()}) PRICE ({result["source"]}) '.center(45, "="))
-    click.echo(f"\U0001F4B1 Price:         {utils.format_float_from_str(price_value, 4)} {price_currency}")
-    click.echo(f'\U0001F4B0 Market cap:    {utils.format_float_from_str(result["market_cap"], 4)} {price_currency}'),
-    click.echo(f"\U0001F3E6 TTL supply:    {total_supply}")
-    click.echo(f'\U0001F4C8 24H change:    {utils.format_float_from_str(result["percent_change_24h"], 1)} %')
+    total_supply = (
+        utils.format_int_from_str(result["total_supply"])
+        if result.get("total_supply")
+        else "Not Available"
+    )
+    click.echo(
+        f' {result.get("symbol")} ({result["name"].upper()}) PRICE ({result["source"]}) '.center(
+            45, "="
+        )
+    )
+    click.echo(
+        f"\U0001f4b1 Price:         {utils.format_float_from_str(price_value, 4)} {price_currency}"
+    )
+    click.echo(
+        f'\U0001f4b0 Market cap:    {utils.format_float_from_str(result["market_cap"], 4)} {price_currency}'
+    ),
+    click.echo(f"\U0001f3e6 TTL supply:    {total_supply}")
+    click.echo(
+        f'\U0001f4c8 24H change:    {utils.format_float_from_str(result["percent_change_24h"], 1)} %'
+    )

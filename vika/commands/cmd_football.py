@@ -28,7 +28,7 @@ def table(ctx, league):
     """View a table"""
     table = ctx.obj.football.table(league)
     for i, team in enumerate(table):
-        rank = f"{i + 1}{pos_number(i+1)}:".center(6)
+        rank = f"{i + 1}{pos_number(i + 1)}:".center(6)
         name = f"{team['name']}".center(30)
         points = f"{team['points']} pts".center(6)
         stats = f"{team['gd']} gd".center(6)

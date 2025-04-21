@@ -1,0 +1,76 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+---
+version: "3"
+
+vars:
+  PY_PKG_NAME: vika
+  HOME:
+    sh: echo $HOME
+  UV:
+    sh: which uv
+
+tasks:
+  default:
+    cmds:
+      - task --list
+    silent: true
+
+  uv:venv:
+    desc: Init venv
+    cmd: "{{ .UV }} venv"
+
+  uv:lock:
+    desc: Update lockfile
+    cmd: "{{ .UV }} lock"
+
+  uv:sync:
+    desc: Sync all dependencies
+    cmd: "{{ .UV }} sync"
+
+  run:
+    desc: Run module Vika
+    cmd: "{{ .UV }} run python -m {{ .PY_PKG_NAME }} {{ .CLI_ARGS }}"
+
+  test:
+    desc: Run all test
+    cmds:
+      - task test:pytest
+      - task test:coverage
+
+  test:pytest:
+    desc: Run pytest
+    cmds:
+      - "{{ .UV }} run pytest"
+
+  test:coverage:
+    desc: Run test coverage
+    cmds:
+      - "{{ .UV }} run pytest --cov-report term:skip-covered --cov={{ .PY_PKG_NAME }}"
+
+  lint:
+    desc: Run golangci-lint
+    cmds:
+      - task lint:isort
+      - task lint:black
+      - task lint:flake8
+
+  lint:isort:
+    desc: Run isort
+    cmd: "{{ .UV }} run isort {{ .PY_PKG_NAME }}/"
+
+  lint:black:
+    desc: Run black
+    cmd: "{{ .UV }} run black {{ .PY_PKG_NAME }}/"
+
+  lint:flake8:
+    desc: Run flake8
+    cmd: "{{ .UV }} run flake8 {{ .PY_PKG_NAME }}/"
+
+  clean:
+    desc: Build bin file from go and install to
+    cmds:
+      - find ./vika -type d -name '__pycache__' -exec rm -rf {} +
+      - find . -type d -name '.pytest_cache' -exec rm -rf {} +
+      - find ./vika -name '*.pyc' -exec rm -f {} +
+      - find ./vika -name '*.pyo' -exec rm -f {} +
+
