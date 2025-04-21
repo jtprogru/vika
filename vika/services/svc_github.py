@@ -12,7 +12,9 @@ class GithubUtility:
         return self.user.get_repo(name)
 
     def create_repo(self, name, private=False, gitignore=""):
-        return self.user.create_repo(name, private=private, gitignore_template=gitignore, auto_init=True)
+        return self.user.create_repo(
+            name, private=private, gitignore_template=gitignore, auto_init=True
+        )
 
     def delete_repo(self, name):
         self.get_repo(name).delete()

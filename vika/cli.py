@@ -12,7 +12,9 @@ import os
 class ComplexCLI(click.MultiCommand):
     def list_commands(self, ctx):
         commands = []
-        commands_folder = os.path.abspath(os.path.join(os.path.dirname(__file__), "commands"))
+        commands_folder = os.path.abspath(
+            os.path.join(os.path.dirname(__file__), "commands")
+        )
         for filename in os.listdir(commands_folder):
             if filename.endswith(".py") and filename.startswith("cmd_"):
                 commands.append(filename.replace("cmd_", "").replace(".py", ""))

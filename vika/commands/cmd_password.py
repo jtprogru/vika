@@ -11,4 +11,7 @@ def cli(length):
 
     password = "".join(secrets.choice(alphabet) for _ in range(length))
 
-    click.echo(click.style("Password: ", fg="green") + click.style(password, fg="red", bold=True))
+    click.echo(
+        click.style("Password: ", fg="green")
+        + click.style(password, fg="red", bold=True)
+    )
